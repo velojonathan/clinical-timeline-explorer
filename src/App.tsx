@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { VisualizationPayload, CanonicalPayload, Series, SeriesPoint, FilterState } from "./types";
+import type { VisualizationPayload, CanonicalPayload, FilterState } from "./types";
 import { filterSeries, formatLabel, seriesToChartData, markersToChartMarkers } from "./adapters/chartAdapter";
 import { NumericChart } from "./components/NumericChart";
 import { CategoricalChart } from "./components/CategoricalChart";
@@ -193,7 +193,6 @@ export default function App() {
                     {selectedPoint && (
                       <DetailPanel
                         point={selectedPoint}
-                        series={selectedSeries}
                         canonicalEvent={canonicalEvent}
                         MissingnessTag={MissingnessTag}
                       />

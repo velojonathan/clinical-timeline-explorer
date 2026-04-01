@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  ReferenceLine, Dot
+  ReferenceLine
 } from "recharts";
 import type { ChartSeries, ChartMarker, ChartDataPoint } from "../adapters/chartAdapter";
 
@@ -52,7 +52,7 @@ function CustomDot(props: {
 
   let fill = "#2563eb";
   let stroke = "#2563eb";
-  let r = isSelected ? 7 : 5;
+  const r = isSelected ? 7 : 5;
 
   if (isMissing) { fill = "#f59e0b"; stroke = "#d97706"; }
   else if (isNotPresent) { fill = "#ef4444"; stroke = "#dc2626"; }
