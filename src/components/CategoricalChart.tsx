@@ -144,9 +144,13 @@ export function CategoricalChart({ data, markers, onPointClick, selectedPointId 
           ))}
           <Scatter
             data={plotData}
-            onClick={(entry: { eventId?: string }) => {
-              if (entry && entry.eventId) onPointClick(entry.eventId);
-            }}
+            onClick={((_data: unknown, _index: number, e: React.MouseEvent) => {
+              const target = e.target as SVGElement;
+              const idx = target.getAttribute("data-index");
+              if (idx !== null && plotData[Number(idx)]) {
+                onPointClick(plotData[Number(idx)].eventId);
+              }
+            }) as unknown as (data: unknown, index: number, e: React.MouseEvent) => void}
             cursor="pointer"
           >
             {plotData.map((pt, i) => (
