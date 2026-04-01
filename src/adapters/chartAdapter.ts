@@ -97,22 +97,22 @@ export function seriesToChartData(series: Series): ChartSeries {
 }
 
 export function markersToChartMarkers(markers: TimelineMarker[]): ChartMarker[] {
-  return markers
-    .map((m) => {
-      const parsed = parseDate(m.timestamp);
-      if (!parsed) return null;
-      return {
-        date: parsed.date,
-        timestamp: parsed.timestamp,
-        label: m.label,
-        status: m.status,
-        markerType: m.marker_type,
-        system: m.system,
-        note: m.note,
-        markerId: m.marker_id,
-      };
-    })
-    .filter((m): m is ChartMarker => m !== null);
+  const result: ChartMarker[] = [];
+  for (const m of markers) {
+    const parsed = parseDate(m.timestamp);
+    if (!parsed) continue;
+    result.push({
+      date: parsed.date,
+      timestamp: parsed.timestamp,
+      label: m.label,
+      status: m.status,
+      markerType: m.marker_type as string,
+      system: m.system,
+      note: m.note,
+      markerId: m.marker_id,
+    });
+  }
+  return result;
 }
 
 export function filterSeries(
