@@ -1,4 +1,4 @@
-import type { Series, SeriesPoint, TimelineMarker, VisualizationPayload } from "../types";
+import type { Series, TimelineMarker, VisualizationPayload } from "../types";
 
 export interface ChartDataPoint {
   date: string;

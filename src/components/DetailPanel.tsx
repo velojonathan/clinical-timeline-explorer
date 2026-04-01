@@ -1,14 +1,12 @@
-import type { Series, SeriesPoint, CanonicalEvent } from "../types";
-import { formatLabel } from "../adapters/chartAdapter";
+import type { SeriesPoint, CanonicalEvent } from "../types";
 
 interface Props {
   point: SeriesPoint;
-  series: Series;
   canonicalEvent: CanonicalEvent | null;
   MissingnessTag: React.ComponentType<{ status: string }>;
 }
 
-export function DetailPanel({ point, series, canonicalEvent, MissingnessTag }: Props) {
+export function DetailPanel({ point, canonicalEvent, MissingnessTag }: Props) {
   return (
     <div className="detail-panel">
       <h3>Observation Detail — {point.event_id}</h3>

@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import type { CanonicalPayload, CanonicalEvent } from "../types";
+import type { CanonicalPayload } from "../types";
 
 interface Props {
   canonical: CanonicalPayload | null;
@@ -11,9 +11,8 @@ export function CanonicalInspector({ canonical }: Props) {
   const [page, setPage] = useState(0);
   const PAGE_SIZE = 50;
 
-  const events = canonical?.observation_events || [];
-
   const filtered = useMemo(() => {
+    const events = canonical?.observation_events || [];
     if (!search.trim()) return events;
     const q = search.trim().toLowerCase();
     return events.filter(
@@ -25,7 +24,7 @@ export function CanonicalInspector({ canonical }: Props) {
         (e.grouping.system || "").toLowerCase().includes(q) ||
         (e.observed_at || "").includes(q)
     );
-  }, [events, search]);
+  }, [canonical, search]);
 
   const paged = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE);

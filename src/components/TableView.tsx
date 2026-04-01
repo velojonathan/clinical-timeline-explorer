@@ -1,4 +1,4 @@
-import type { Series, SeriesPoint } from "../types";
+import type { Series } from "../types";
 import { formatLabel } from "../adapters/chartAdapter";
 
 interface Props {
