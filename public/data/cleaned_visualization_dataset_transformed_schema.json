@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Canonical Clinical Observation Export",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "metadata",
+    "observation_events"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "observation_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "event_id",
+          "event_type",
+          "observed_at",
+          "source_record",
+          "grouping",
+          "value",
+          "semantics"
+        ],
+        "properties": {
+          "event_id": {
+            "type": "string"
+          },
+          "event_type": {
+            "const": "observation_event"
+          },
+          "observed_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_row_index": {
+            "type": "integer"
+          },
+          "source_record": {
+            "type": "object"
+          },
+          "grouping": {
+            "type": "object"
+          },
+          "value": {
+            "type": "object"
+          },
+          "semantics": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}
